@@ -16,6 +16,7 @@ class CreatePurchaseTable extends Migration
         Schema::create('purchase', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
+            $table->text('description');
         });
     }
 
