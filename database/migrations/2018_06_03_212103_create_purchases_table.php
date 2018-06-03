@@ -17,7 +17,7 @@ class CreatePurchasesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('description');
-            $table->integer('id_user');
+            $table->integer('id_user')->references('id')->on('users');
             $table->timestamp('date_cancel')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }

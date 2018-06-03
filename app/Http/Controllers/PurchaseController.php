@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Purchase;
+use App\User;
 use Illuminate\Http\Request;
 
 class PurchaseController extends Controller
@@ -14,7 +15,14 @@ class PurchaseController extends Controller
      */
     public function index()
     {
-        //
+       
+        //pegano todas as compras com o id do usuario
+        // $teste = User::find(1)->purchase;
+
+        //pegando se o usuario tem relacao com a tabela de compras
+         $teste = Purchase::find(1)->user;
+         dd($teste);
+     
     }
 
     /**
