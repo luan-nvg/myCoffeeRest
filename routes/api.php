@@ -18,4 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 //http://127.0.0.1:8000/api/inventory/warehouses
-Route::resource('inventory/warehouses', 'WarehouseController');
+Route::get('purchase/create', [
+    'as' => 'purchaseCreate', 'uses' => 'PurchaseController@create'
+]);

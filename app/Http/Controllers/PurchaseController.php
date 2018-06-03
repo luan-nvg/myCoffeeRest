@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
@@ -21,9 +22,17 @@ class PurchaseController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+
+        //return 'sdads';
+
+        $purchase = DB::table('purchase')->insert([
+            'description' => $request->description,
+            'id_user'     => $request->id_user,
+        ]);
+        dd($purchase);
+        return $purchase;
     }
 
     /**
@@ -81,4 +90,13 @@ class PurchaseController extends Controller
     {
         //
     }
+    protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'name'     => 'required|string|max:255',
+            'email'    => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+    }
+
 }

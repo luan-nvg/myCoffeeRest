@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreatePurchaseTable extends Migration
 {
@@ -17,6 +18,8 @@ class CreatePurchaseTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('description');
+            $table->integer('id_user');
+            $table->timestamp('date_cancel')->default(DB::raw('CURRENT_TIMESTAMP'));
         });
     }
 
