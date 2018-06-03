@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Purchase;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class PurchaseController extends Controller
 {
@@ -24,14 +24,13 @@ class PurchaseController extends Controller
      */
     public function create(Request $request)
     {
+        $purchase = new Purchase;
 
-        //return 'sdads';
+        $purchase->description = $request->description;
+        $purchase->id_user     = $request->id_user;
+        $purchase->date_cancel = $request->date_cancel;
+        $purchase->save();
 
-        $purchase = DB::table('purchase')->insert([
-            'description' => $request->description,
-            'id_user'     => $request->id_user,
-        ]);
-        dd($purchase);
         return $purchase;
     }
 

@@ -3,9 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\DB;
 
-class CreatePurchaseTable extends Migration
+class CreatePurchasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +13,7 @@ class CreatePurchaseTable extends Migration
      */
     public function up()
     {
-        Schema::create('purchase', function (Blueprint $table) {
+        Schema::create('purchases', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
             $table->text('description');
@@ -30,6 +29,6 @@ class CreatePurchaseTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('purchase');
+        Schema::dropIfExists('purchases');
     }
 }
